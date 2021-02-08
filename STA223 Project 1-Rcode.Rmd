@@ -17,10 +17,10 @@ setwd("D:\\00 Puji's files\\01 master plan\\09 Winter quarter\\STA 223\\project 
 
 ## Introduction and Data summary 
 
-United States presidential election's result is always very impactful and worthy to analyze. Here we want to know which demography and economic factors are significantly crucial to the 2016 election result and describe the common characteristic of the counties which won by the Democratic Party(DEM), or the Republican Party(GOP). Since our response variable, the election result is binary type (1 is DEM's win, 0 is GOP's win), we choose logistic regression to build a general linear regression model to achieve our goal. The dataset is collected by Jia et al. [1]. It includes 3111 counties in the 48 contiguous United States (except Oglala Lakota County, South Dakota) and Hawaii and 24 variables of the election result, demography and economic factors in 2012 and 2016 (etc. unemployment rate, median income and population). Appendix Table 3 shows the bachelor rate, median income, population, civilian labor force, and the unemployment rate all have a high correlation with themselves in the different years. After the colinear check, we delete all the 2012's variables except for 2012's election result and use the rest of the predictors to build the first model.
+United States presidential election's result is always very impactful and worthy to analyze. Here we want to know which demography and economic factors are significantly crucial to the 2016 election result and describe the common characteristic of the counties which won by the Democratic Party(DEM), or the Republican Party(GOP). Since our response variable, the election result is binary type (1 is DEM's win, 0 is GOP's win), we choose logistic regression to build a general linear regression model to achieve our goal. The dataset is collected by Jia et al. [1]. It includes 3111 counties in the 48 contiguous United States (except Oglala Lakota County, South Dakota) and Hawaii and 24 variables of the election result, demography and economic factors in 2012 and 2016 (etc. unemployment rate, median income and population). Appendix Table 3 shows the bachelor rate, median income, population, civilian labor force, and the unemployment rate all have a high correlation with themselves in the different years. After the colinear check, we delete all the 2012's variables except for 2012's election result and use the rest of the predictors to build the first model. ^[The coda and data are aviliable in [Github repo](https://github.com/yunanhou95/STA223-Project-1.git)]
 
 ```{r EDA,warning=F,include=F}
-pj_raw<-read.csv("project_data_full.csv",header = TRUE)
+pj_raw<-read.csv("STA223_Project_1_data.csv",header = TRUE)
 
 #change data type
 pj_raw$MedianIncome2016<-as.numeric(pj_raw$MedianIncome2016)
@@ -41,7 +41,7 @@ pj_01$result2016<- as.numeric(pj_01$dem_2016-pj_01$gop_2016>0)
 
 
 ```{r map, echo=FALSE, warning=FALSE,fig.height=3 , fig.width=5,out.extra='trim={0 1cm 0 1cm},clip'}
-data = read.csv("map.csv")
+data = read.csv("STA223_Project_1_map.csv")
 data$result = as.factor(data$result)
 col_list<-c("#CC0000", "#0072B2")
 
